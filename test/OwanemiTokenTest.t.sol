@@ -27,9 +27,19 @@ contract OwanemiTokenTest is Test {
         assertEq(STARTING_BALANCE, owanemitoken.balanceOf(Owanemi));
     }
 
-    // function testTransfer() public {
-    //     owanemitoken.transfer(Sotonye, 10 ether);
-    //     assertEq(owanemitoken.balanceOf(Sotonye), 10 ether);
-    //     assertEq(owanemitoken.balanceOf(Owanemi), 90 ether);
-    // }
+    function testAllowancesWorks() public {
+        uint256 initialAllowance = 1000;
+
+        vm.prank(Owanemi);
+        owanemitoken.approve(Sotonye, initialAllowance);
+
+        uint256 transferAmount = 500;
+
+        vm.prank(Sotonye);
+        owanemitoken.transferFrom(Owanemi, Sotonye, transferAmount); 
+
+        assertEq(owanemitoken.balanceOf(Sotonye), transferAmount);
+        assertEq(owanemitoken.balanceOf(Owanemi), STARTING_BALANCE - transferAmount);
+    }
+
 }
