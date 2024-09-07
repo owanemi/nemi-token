@@ -8,9 +8,10 @@ contract DeployOwanemiToken is Script {
 
     uint256 public constant INITIAL_SUPPLY = 1e6 ether;
 
-    function run() external {
+    function run() external returns (OwanemiToken) {
         vm.startBroadcast();
-        new OwanemiToken(INITIAL_SUPPLY);
+        OwanemiToken owanemitoken = new OwanemiToken(INITIAL_SUPPLY);
         vm.stopBroadcast();
+        return owanemitoken;
     }
 }
