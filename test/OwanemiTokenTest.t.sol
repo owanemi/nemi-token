@@ -5,11 +5,10 @@ import {Test} from "lib/forge-std/src/Test.sol";
 import {OwanemiToken} from "src/OwanemiToken.sol";
 import {DeployOwanemiToken} from "script/DeployOwanemiToken.s.sol";
 
-
 contract OwanemiTokenTest is Test {
     OwanemiToken public owanemitoken;
     DeployOwanemiToken public deployer;
-    
+
     uint256 public constant STARTING_BALANCE = 100 ether;
 
     address Owanemi = makeAddr("Owanemi");
@@ -36,10 +35,9 @@ contract OwanemiTokenTest is Test {
         uint256 transferAmount = 500;
 
         vm.prank(Sotonye);
-        owanemitoken.transferFrom(Owanemi, Sotonye, transferAmount); 
+        owanemitoken.transferFrom(Owanemi, Sotonye, transferAmount);
 
         assertEq(owanemitoken.balanceOf(Sotonye), transferAmount);
         assertEq(owanemitoken.balanceOf(Owanemi), STARTING_BALANCE - transferAmount);
     }
-
 }

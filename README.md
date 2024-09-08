@@ -1,6 +1,6 @@
 ## OWANEMI-TOKEN
 
-** A token on Ethereum following the ERC-20 standard **
+**A token on Ethereum following the ERC-20 standard**
 
 - CONTRACT-ADDRESS: 0xBF68a24e5Be60B0c07247f054bb1564E7DC554F8
 - NAME: OWANEMI-TOKEN
